@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        #header{
+            width: 600px;
+            height: 150px;
+            text-align: center;
+            justify-content: center;
+        }
+        h1{
+            color: orange;
+        }
+        #main{
+            width: 600px;            
+            border: 2px solid;
+            border-color: orange;     
+            margin-left: 400px; 
+            padding: 10px;     
+        }
+        input{
+            width: 100%;
+            height: 30px;
+            margin: 5px;
+            font-size: 18px;
+        }
+        button{
+            width: 100%;
+            height: 50px;
+            background-color: orange;
+            color: white;
+            text-align: center;
+        }
+        select{
+            width: 100%;
+            height: 33px;
+            margin: 5px;
+        }
+        option{
+            height: 33px;
+        }
+        form{
+            padding: 10px;
+        }
+        #time{
+            width: 100%;
+            display: flex;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+        <h1>Book a call</h1>
+        <p>Book a call slot and our representive will call you within 1hr of selected time.</p>
+        </div>
+        <hr>
+        <form>
+        <label for="Name">Name</label>
+        <input type="text" id="Name">
+        <label for="Email">Email</label>
+        <input type="email" id="Email">
+        <label for="Phone">Phone</label>
+        <input type="number" id="Phone">
+        <label for="date">Time for Call:</label>
+        <div id="time">
+            <input type="date" id="Dates">
+            <select id="Times">
+                <option value="11:00" selected>11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="01:00">01:00</option>
+                <option value="02:00">02:00</option>
+            </select>
+        </div>
+        <button type="submit" onclick="print()">GET A CALL</button>
+        </form>
+    </div>
+    <script src="Exercise01.js"></script>
+</body>
+</html>

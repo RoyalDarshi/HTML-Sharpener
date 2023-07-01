@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        label{
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body class="container justify-content-center" >
+    <div class="w-50 border border-2 p-2 border-warning mt-2 rounded" style="margin-left: 330px;">
+        <div class="text-center">
+            <h4 class="text-warning">Book a Cab</h4>
+            <p>Book a call slot and our representive will call you within 1hr of selected time.</p>
+        </div>
+        <hr>
+        <div>
+            <form action="">
+                <label class="form-lable">Name</label>
+                <input id="Name" type="text" class="form-control">
+                <label class="form-lable">Email</label>
+                <input id="Email" type="email" class="form-control">
+                <label class="form-lable">Phone</label>
+                <input id="Phone" type="number" class="form-control">
+                <label class="form-lable">Time for Call:</label>
+                <div class="input-group">
+                    <input id="Dates" type="date" class="form-control me-1">
+                    <select id="Times" class="form-select ms-1" name="" id="">
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="01:00">01:00</option>
+                        <option value="02:00">02:00</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning w-100 text-light mt-2" onclick="print()">GET A CALL</button>
+            </form>
+        </div>
+    </div>
+    <script src="Exercise01.js"></script>
+</body>
+</html>
