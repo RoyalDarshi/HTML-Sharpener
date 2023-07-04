@@ -9,8 +9,16 @@
 // for(var i=0;i<items.length;i++){
 //     items[i].style.fontWeight="bold";
 // }
-var li=document.getElementsByTagName("li");
-for(var i=0;i<li.length;i++){
-    li[i].style.backgroundColor="gray";
-    li[i].style.padding="5px";
+// var li=document.getElementsByTagName("li");
+// for(var i=0;i<li.length;i++){
+//     li[i].style.backgroundColor="gray";
+//     li[i].style.padding="5px";
+// }
+var lisec=document.querySelector(".list-group-item:nth-child(2)");
+lisec.style.backgroundColor="green";
+var lithird=document.querySelector(".list-group-item:nth-child(3)");
+lithird.style.display="none";
+var odd=document.querySelectorAll(".list-group-item:nth-child(odd)");
+for(var i=0;i<odd.length;i++){
+    odd[i].style.backgroundColor="green";
 }
