@@ -3,13 +3,13 @@ btn.addEventListener("submit",addDetail);
 let ul=document.getElementById("ul");
 function addDetail(e){
     e.preventDefault();
-    var obj={
+    let obj={
         Name:document.getElementById("name").value,
         Eamil:document.getElementById("email").value,
         Mobile:document.getElementById("mobile").value
     }
-    var objSerialize=JSON.stringify(obj);
-    var li=document.createElement("li");
+    let objSerialize=JSON.stringify(obj);
+    let li=document.createElement("li");
     li.appendChild(document.createTextNode(objSerialize));
     let btn=document.createElement("button");
     btn.innerText="Delete";
