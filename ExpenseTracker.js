@@ -24,6 +24,7 @@ function addDetail(e) {
         ul.removeChild(li);
         localStorage.removeItem(name);
     });
+    
     li.appendChild(deleteBtn);
     let editBtn = document.createElement("button");
     editBtn.innerText = "Edit";
