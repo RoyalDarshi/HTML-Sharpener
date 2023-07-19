@@ -24,7 +24,7 @@ function addDetail(e) {
         ul.removeChild(li);
         localStorage.removeItem(name);
     });
-    
+
     li.appendChild(deleteBtn);
     let editBtn = document.createElement("button");
     editBtn.innerText = "Edit";
@@ -39,3 +39,35 @@ function addDetail(e) {
     li.appendChild(editBtn);
     ul.appendChild(li);
 }
+window.addEventListener("load", () => {
+    for (let i = 0; i < localStorage.length; i++){
+        let name = "Name: ";
+        let qty = "Qty: ";
+        let price = "Price: ";
+        let prod = localStorage.getItem(localStorage.key(i));
+        let syncProd = JSON.parse(prod);
+        let li = document.createElement("li");
+        li.innerHTML = `Product Name: ${syncProd[name]} ; Qty: ${syncProd[qty]} ; Price: ${syncProd[price]}   `;
+        let deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+        deleteBtn.classList = "btn btn-danger m-2";
+        deleteBtn.addEventListener("click", () => {
+            ul.removeChild(li);
+            localStorage.removeItem(syncProd[name]);
+        });
+
+        li.appendChild(deleteBtn);
+        let editBtn = document.createElement("button");
+        editBtn.innerText = "Edit";
+        editBtn.classList = "btn btn-warning";
+        editBtn.addEventListener("click", () => {
+            ul.removeChild(li);
+            localStorage.removeItem(syncProd[name]);
+            document.getElementById("name").value = syncProd[name];
+            document.getElementById("qty").value = syncProd[qty];
+            document.getElementById("price").value = syncProd[price];
+        });
+        li.appendChild(editBtn);
+        ul.appendChild(li);
+    }
+})
