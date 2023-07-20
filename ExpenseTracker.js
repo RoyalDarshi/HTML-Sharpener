@@ -11,33 +11,36 @@ function addDetail(e) {
         "Qty: ": qty,
         "Price: ":price
     };
-    localStorage.setItem(name, JSON.stringify(obj));
-    document.getElementById("name").value = "";
-    document.getElementById("qty").value = "";
-    document.getElementById("price").value = "";
-    let li = document.createElement("li");
-    li.innerHTML = `Product Name: ${name} ; Qty: ${qty} ; Price: ${price}   `;
-    let deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "Delete";
-    deleteBtn.classList = "btn btn-danger m-2";
-    deleteBtn.addEventListener("click", () => {
-        ul.removeChild(li);
-        localStorage.removeItem(name);
-    });
+    console.log(obj);
+    // localStorage.setItem(name, JSON.stringify(obj));
+    // document.getElementById("name").value = "";
+    // document.getElementById("qty").value = "";
+    // document.getElementById("price").value = "";
+    // let li = document.createElement("li");
+    // li.innerHTML = `Product Name: ${name} ; Qty: ${qty} ; Price: ${price}   `;
+    // let deleteBtn = document.createElement("button");
+    // deleteBtn.innerText = "Delete";
+    // deleteBtn.classList = "btn btn-danger m-2";
+    // deleteBtn.addEventListener("click", () => {
+    //     ul.removeChild(li);
+    //     localStorage.removeItem(name);
+    // });
+    axios.post("https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenceTracker", obj).then(res => console.log(res))
+        .catch(err => console.log(err));
 
-    li.appendChild(deleteBtn);
-    let editBtn = document.createElement("button");
-    editBtn.innerText = "Edit";
-    editBtn.classList = "btn btn-warning";
-    editBtn.addEventListener("click", () => {
-        ul.removeChild(li);
-        localStorage.removeItem(name);
-        document.getElementById("name").value = name;
-        document.getElementById("qty").value = qty;
-        document.getElementById("price").value = price;
-    });
-    li.appendChild(editBtn);
-    ul.appendChild(li);
+    // li.appendChild(deleteBtn);
+    // let editBtn = document.createElement("button");
+    // editBtn.innerText = "Edit";
+    // editBtn.classList = "btn btn-warning";
+    // editBtn.addEventListener("click", () => {
+    //     ul.removeChild(li);
+    //     localStorage.removeItem(name);
+    //     document.getElementById("name").value = name;
+    //     document.getElementById("qty").value = qty;
+    //     document.getElementById("price").value = price;
+    // });
+    // li.appendChild(editBtn);
+    // ul.appendChild(li);
 }
 window.addEventListener("load", () => {
     for (let i = 0; i < localStorage.length; i++){
