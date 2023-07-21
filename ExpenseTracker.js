@@ -17,11 +17,11 @@ function addDetail(e) {
     //console.log();
     // localStorage.setItem(name, JSON.stringify(obj));
 
-    // axios.post("https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker",JSON.stringify(obj)).then(res => console.log(res))
+    // axios.post("https://crudcrud.com/api/b4ef3499af784a7dac23b90d8bf47019/expenseTracker",JSON.stringify(obj)).then(res => console.log(res))
     //     .catch(err => console.log(err));
     axios({
         method: 'post',
-        url: 'https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker',
+        url: 'https://crudcrud.com/api/b4ef3499af784a7dac23b90d8bf47019/expenseTracker',
         data: obj
     })
         .then((res) => {
@@ -38,7 +38,7 @@ function addDetail(e) {
                 //console.log(res);
                 let id = res.data._id;
                 //console.log(res+" "+id)
-                axios.delete(`https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker/${id}`)
+                axios.delete(`https://crudcrud.com/api/b4ef3499af784a7dac23b90d8bf47019/expenseTracker/${id}`)
                     .then(res => console.log(res))
                     .catch(err => console.log(err));
                 ul.removeChild(li);
@@ -49,7 +49,8 @@ function addDetail(e) {
             editBtn.classList = "btn btn-warning";
             editBtn.addEventListener("click", () => {
                 let id = res.data._id;
-                axios.delete(`https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker/${id}`)
+                console.log(id);
+                axios.delete(`https://crudcrud.com/api/b4ef3499af784a7dac23b90d8bf47019/expenseTracker/${id}`)
                     .then(res => console.log(res))
                     .catch(err => console.log(err));
                 ul.removeChild(li);
@@ -57,14 +58,14 @@ function addDetail(e) {
                 document.getElementById("qty").value = qty;
                 document.getElementById("price").value = price;
             });
-            li.appendChild(editBtn);            
+            li.appendChild(editBtn);
             ul.appendChild(li);
         })
         .catch((err) => console.error(err))
 }
 window.addEventListener("load", () => {
 
-    axios.get("https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker").then((res) => {
+    axios.get("https://crudcrud.com/api/b4ef3499af784a7dac23b90d8bf47019/expenseTracker").then((res) => {
         console.log(res.data);
         for (const element of res.data) {
             let item = element;
@@ -75,7 +76,7 @@ window.addEventListener("load", () => {
             deleteBtn.classList = "btn btn-danger m-2";
             deleteBtn.addEventListener("click", () => {
                 let id = item._id;
-                axios.delete(`https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker/${id}`)
+                axios.delete(`https://crudcrud.com/api/b4ef3499af784a7dac23b90d8bf47019/expenseTracker/${id}`)
                     .then(res => console.log(res))
                     .catch(err => console.log(err));
                 ul.removeChild(li);
@@ -85,6 +86,11 @@ window.addEventListener("load", () => {
             editBtn.innerText = "Edit";
             editBtn.classList = "btn btn-warning";
             editBtn.addEventListener("click", () => {
+                let id = item._id;
+                console.log(id);
+                axios.delete(`https://crudcrud.com/api/b4ef3499af784a7dac23b90d8bf47019/expenseTracker/${id}`)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err));
                 ul.removeChild(li);
                 document.getElementById("name").value = item.Name;
                 document.getElementById("qty").value = item.Qty;
