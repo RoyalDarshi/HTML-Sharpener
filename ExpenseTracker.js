@@ -17,58 +17,67 @@ function addDetail(e) {
     //console.log();
     // localStorage.setItem(name, JSON.stringify(obj));
 
-    // axios.post("https://crudcrud.com/api/2c94a6d455a94c5b9043adceef5cc79a/expenseTracker",JSON.stringify(obj)).then(res => console.log(res))
+    // axios.post("https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker",JSON.stringify(obj)).then(res => console.log(res))
     //     .catch(err => console.log(err));
     axios({
         method: 'post',
-        url: 'https://crudcrud.com/api/2c94a6d455a94c5b9043adceef5cc79a/expenseTracker',
+        url: 'https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker',
         data: obj
     })
         .then((res) => {
             console.log(res)
-            showData();
+            document.getElementById("name").value = "";
+            document.getElementById("qty").value = "";
+            document.getElementById("price").value = "";
+            let li = document.createElement("li");
+            li.innerHTML = `Product Name: ${name} ; Qty: ${qty} ; Price: ${price}   `;
+            let deleteBtn = document.createElement("button");
+            deleteBtn.innerText = "Delete";
+            deleteBtn.classList = "btn btn-danger m-2";
+            deleteBtn.addEventListener("click", () => {
+                //console.log(res);
+                let id = res.data._id;
+                //console.log(res+" "+id)
+                axios.delete(`https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker/${id}`)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err));
+                ul.removeChild(li);
+            });
+            li.appendChild(deleteBtn);
+            let editBtn = document.createElement("button");
+            editBtn.innerText = "Edit";
+            editBtn.classList = "btn btn-warning";
+            editBtn.addEventListener("click", () => {
+                let id = res.data._id;
+                axios.delete(`https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker/${id}`)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err));
+                ul.removeChild(li);
+                document.getElementById("name").value = name;
+                document.getElementById("qty").value = qty;
+                document.getElementById("price").value = price;
+            });
+            li.appendChild(editBtn);            
+            ul.appendChild(li);
         })
         .catch((err) => console.error(err))
-
-    function showData() {
-        document.getElementById("name").value = "";
-        document.getElementById("qty").value = "";
-        document.getElementById("price").value = "";
-        let li = document.createElement("li");
-        li.innerHTML = `Product Name: ${name} ; Qty: ${qty} ; Price: ${price}   `;
-        let deleteBtn = document.createElement("button");
-        deleteBtn.innerText = "Delete";
-        deleteBtn.classList = "btn btn-danger m-2";
-        deleteBtn.addEventListener("click", () => {
-            ul.removeChild(li);
-        });
-        li.appendChild(deleteBtn);
-        let editBtn = document.createElement("button");
-        editBtn.innerText = "Edit";
-        editBtn.classList = "btn btn-warning";
-        editBtn.addEventListener("click", () => {
-            ul.removeChild(li);
-            document.getElementById("name").value = name;
-            document.getElementById("qty").value = qty;
-            document.getElementById("price").value = price;
-        });
-        li.appendChild(editBtn);
-        ul.appendChild(li);
-    }
-
 }
 window.addEventListener("load", () => {
 
-    axios.get("https://crudcrud.com/api/2c94a6d455a94c5b9043adceef5cc79a/expenseTracker").then((res) => {
+    axios.get("https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker").then((res) => {
         console.log(res.data);
-        for (let i = 0; i < res.data.length; i++) {
-            let item = res.data[i];
+        for (const element of res.data) {
+            let item = element;
             let li = document.createElement("li");
             li.innerHTML = `Product Name: ${item.Name} ; Qty: ${item.Qty} ; Price: ${item.Price}   `;
             let deleteBtn = document.createElement("button");
             deleteBtn.innerText = "Delete";
             deleteBtn.classList = "btn btn-danger m-2";
             deleteBtn.addEventListener("click", () => {
+                let id = item._id;
+                axios.delete(`https://crudcrud.com/api/a9ea33ab6bda45ebadb09e724f45c403/expenseTracker/${id}`)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err));
                 ul.removeChild(li);
             });
             li.appendChild(deleteBtn);
