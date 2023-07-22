@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="Eng">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>SuperMart</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>    
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        label{
+            width: 150px;
+        }
+    </style>
+</head>
+<body class="container-fluid ">
+    <form action="" class="form-control w-50 m-3 " id="form">
+        <h1 class="p-2 text-center">Super Mart</h1>
+        <div class="input-group m-2">
+            <label for="Name" class="p-2">Product name</label>
+            <input type="text" class="form-control" name="Name" id="Name">
+        </div>
+        <div class="input-group m-2">
+            <label for="Price" class="p-2">Price</label>
+            <input type="number" class="form-control" name="Price" id="Price">
+        </div>
+        <div class="input-group m-2">
+            <label for="Category" class="p-2">Category</label>
+            <select name="Category" class="form-select" id="Category">
+                <option disabled selected>--Select Category--</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Food">Food</option>
+                <option value="Cloth">Cloth</option>
+                <option value="Jwellery">Jwellery</option>
+            </select>
+        </div>
+        <button type="submit" class=" mt-2 btn btn-primary w-100">Submit</button>
+    </form>
+    <h2>Electronics Item</h2>
+    <ul id="Electronics"></ul>
+    <h2>Food Item</h2>
+    <ul id="Food"></ul>
+    <h2>Cloth Item</h2>
+    <ul id="Cloth"></ul>
+    <h2>Jwellery Item</h2>
+    <ul id="Jwellery"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="./SuperMart.js"></script>
+</body>
+</html>
